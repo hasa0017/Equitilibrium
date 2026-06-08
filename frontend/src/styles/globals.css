@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-bg-base text-ink-primary font-sans;
+    background-image:
+      radial-gradient(800px 400px at 80% -10%, rgba(61, 123, 255, 0.08), transparent 60%),
+      radial-gradient(700px 350px at -10% 110%, rgba(255, 71, 87, 0.05), transparent 60%);
+    min-height: 100vh;
+  }
+  /* Numbers always feel right in mono — tabular figures keep columns aligned */
+  .num {
+    font-feature-settings: 'tnum' 1, 'lnum' 1;
+    @apply font-mono;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-bg-surface border border-bg-border rounded-xl shadow-card;
+  }
+  .card-tight { @apply p-4; }
+  .card-roomy { @apply p-6; }
+
+  .kpi-label {
+    @apply text-[11px] uppercase tracking-[0.14em] text-ink-muted font-medium;
+  }
+  .kpi-value {
+    @apply text-2xl num text-ink-primary;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-xs num
+           border border-bg-border bg-bg-raised;
+  }
+  .chip-bull { @apply bg-bull/10 border-bull/30 text-bull; }
+  .chip-bear { @apply bg-bear/10 border-bear/30 text-bear; }
+
+  .divider {
+    @apply h-px bg-gradient-to-r from-transparent via-bg-border to-transparent;
+  }
+}
+
+/* Subtle grid overlay for hero areas */
+.grid-overlay {
+  background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
